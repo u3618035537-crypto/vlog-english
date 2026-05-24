@@ -37,7 +37,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 .login-note{font-size:11px;color:var(--text3);margin-top:20px;}
 
 /* ── 主应用 ── */
-#app{display:none;height:100vh;display:none;flex-direction:column;}
+#app{display:none;height:100vh;flex-direction:column;}
 #app.show{display:flex;}
 
 /* ── 顶栏 ── */
@@ -72,8 +72,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 .video-wrap{background:#000;position:relative;flex-shrink:0;}
 .video-wrap video{width:100%;display:block;max-height:42vh;}
 .no-video{aspect-ratio:16/9;max-height:42vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text2);font-size:13px;background:#000;}
-.no-video-icon{width:48px;height:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;}
-.no-video-icon svg{fill:#000;margin-left:3px;}
 
 /* ── 播放控制 ── */
 .controls{background:var(--bg2);border-bottom:1px solid var(--border);padding:7px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex-shrink:0;}
@@ -91,8 +89,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 .mbtn{padding:3px 10px;border:1px solid var(--border);border-radius:5px;background:none;color:var(--text2);font-size:11px;cursor:pointer;transition:all 0.12s;}
 .mbtn:hover{background:var(--bg3);}
 .mbtn.on{background:var(--gold-bg);color:var(--gold);border-color:var(--gold-border);}
-.mbtn.on.blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);}
-.mbtn.on.green{background:var(--green-bg);color:var(--green);border-color:rgba(76,175,80,0.3);}
 
 /* ── 字幕区 ── */
 .hint-strip{padding:5px 12px;font-size:11px;color:var(--text2);background:var(--bg3);border-bottom:1px solid var(--border);}
@@ -109,7 +105,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 .zh-line{font-size:11px;color:var(--text2);margin-top:2px;line-height:1.5;}
 .hl-word{background:rgba(245,166,35,0.15);color:var(--gold);border-radius:3px;padding:0 2px;border-bottom:1px dashed var(--gold);cursor:pointer;font-weight:500;}
 .hl-phrase{background:var(--blue-bg);color:var(--blue);border-radius:3px;padding:0 2px;border-bottom:1px dashed var(--blue);}
-.user-hl{background:rgba(245,166,35,0.2);border-radius:3px;padding:0 2px;border-bottom:2px solid var(--gold);}
 .sent-actions{display:none;margin-top:7px;gap:5px;flex-wrap:wrap;}
 .sent-actions.show{display:flex;}
 .sa-btn{padding:3px 9px;border:1px solid var(--border2);border-radius:5px;background:none;color:var(--text2);font-size:11px;cursor:pointer;display:flex;align-items:center;gap:3px;transition:all 0.12s;}
@@ -121,8 +116,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 .vtab{flex:1;padding:9px 4px;text-align:center;font-size:11px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.12s;}
 .vtab:hover{color:var(--text);}
 .vtab.on{color:var(--gold);border-bottom-color:var(--gold);}
-.vpanel{flex:1;overflow-y:auto;padding:10px;}
-.vpanel{display:none;}
+.vpanel{flex:1;overflow-y:auto;padding:10px;display:none;}
 .vpanel.on{display:block;}
 .vsec-title{font-size:10px;color:var(--text3);letter-spacing:0.05em;margin-bottom:6px;}
 
@@ -152,13 +146,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 .nb-sent-en{color:var(--text);margin-bottom:2px;}
 .nb-sent-zh{color:var(--text2);}
 .nb-sent-note{color:var(--green);font-style:italic;margin-top:3px;}
-.nb-note-item{padding:6px 0;border-bottom:1px solid var(--border);font-size:11px;}
-.nb-note-kw{color:var(--gold);margin-bottom:2px;}
-.nb-note-txt{color:var(--text2);}
 .exp-btn{width:100%;padding:7px;margin-top:8px;border:1px solid var(--border2);border-radius:var(--radius);background:none;color:var(--text2);font-size:11px;cursor:pointer;transition:all 0.12s;}
 .exp-btn:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ── 弹窗：单词详情 ── */
+/* ── 弹窗 ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;align-items:center;justify-content:center;}
 .overlay.show{display:flex;}
 .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:20px;width:100%;max-width:300px;position:relative;}
@@ -169,15 +160,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 .modal-mean{font-size:14px;color:var(--text);margin-bottom:8px;}
 .modal-ex{font-size:12px;color:var(--text2);font-style:italic;background:var(--bg3);padding:8px 10px;border-radius:var(--radius);line-height:1.6;margin-bottom:10px;}
 .modal-syns{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px;}
-.modal-save{width:100%;padding:9px;background:var(--gold);color:#000;border:none;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;transition:opacity 0.15s;}
-.modal-save:hover{opacity:0.85;}
+.modal-save{width:100%;padding:9px;background:var(--gold);color:#000;border:none;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;}
 
-/* ── 弹窗：笔记 ── */
 .note-modal{max-width:340px;}
 .note-modal .nm-label{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;}
 .note-modal .nm-quote{font-size:11px;color:var(--text2);font-style:italic;margin-bottom:10px;line-height:1.5;}
-.note-modal textarea{width:100%;padding:8px 10px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-size:13px;resize:none;outline:none;font-family:inherit;transition:border-color 0.15s;}
-.note-modal textarea:focus{border-color:var(--gold);}
+.note-modal textarea{width:100%;padding:8px 10px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-size:13px;resize:none;outline:none;font-family:inherit;}
 .nm-actions{display:flex;gap:8px;margin-top:10px;justify-content:flex-end;}
 .nm-cancel{padding:7px 14px;border:1px solid var(--border2);border-radius:var(--radius);background:none;color:var(--text2);font-size:12px;cursor:pointer;}
 .nm-save{padding:7px 16px;background:var(--gold);color:#000;border:none;border-radius:var(--radius);font-size:12px;font-weight:600;cursor:pointer;}
@@ -185,11 +173,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 /* ── 手机底部导航 ── */
 .mobile-nav{display:none;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;}
 .mnav-items{display:flex;}
-.mnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px 6px;cursor:pointer;color:var(--text3);font-size:10px;transition:color 0.12s;}
+.mnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px 6px;cursor:pointer;color:var(--text3);font-size:10px;}
 .mnav-item.on{color:var(--gold);}
 .mnav-icon{font-size:18px;line-height:1;}
-
-/* ── 手机面板切换 ── */
 .mobile-panels{display:none;}
 
 /* ── 响应式 ── */
@@ -203,32 +189,23 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
   .sidebar{border-right:none;overflow-y:auto;flex:1;}
   .ep-item{border-left:none;border-bottom:1px solid var(--border);}
 }
-@media(max-width:480px){
-  .topbar{padding:0 10px;}
-  .controls{padding:6px 8px;}
-  .mode-bar{padding:5px 8px;}
-}
 </style>
 </head>
 <body>
 
-<!-- ══ 登录页 ══ -->
 <div id="login-page">
   <div class="login-box">
     <div class="login-logo">Vlog<span>英语</span></div>
     <div class="login-sub">用真实 Vlog 学地道英语</div>
-    <input type="text" id="login-user" placeholder="账号" autocomplete="username">
-    <input type="password" id="login-pass" placeholder="密码" autocomplete="current-password">
-    <button class="login-btn" onclick="doLogin()">进入学习</button>
+    <input type="text" id="login-user" placeholder="账号">
     <div class="login-err" id="login-err"></div>
+    <input type="password" id="login-pass" placeholder="密码">
+    <button class="login-btn" onclick="doLogin()">进入学习</button>
     <div class="login-note">购买后账号密码将发送给你</div>
   </div>
 </div>
 
-<!-- ══ 主应用 ══ -->
 <div id="app">
-
-  <!-- 顶栏 -->
   <div class="topbar">
     <div class="logo">Vlog<span>英语</span></div>
     <div class="ep-selector">
@@ -240,16 +217,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
     </div>
   </div>
 
-  <!-- 桌面布局 -->
   <div class="desktop-layout">
-
-    <!-- 左：课程列表 -->
     <div class="sidebar" id="sidebar"></div>
-
-    <!-- 中：视频+字幕 -->
     <div class="content">
       <div class="video-wrap" id="video-wrap"></div>
-
       <div class="controls">
         <div class="prog-wrap">
           <span class="time-lbl" id="cur-time">0:00</span>
@@ -262,10 +233,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
           <button class="cbtn" onclick="setSpeed(this,1.25)">1.25x</button>
           <button class="cbtn" onclick="setSpeed(this,1.5)">1.5x</button>
         </div>
-        <button class="cbtn icon-btn" id="loop-btn" onclick="toggleLoop()" title="AB循环">↺</button>
-        <button class="cbtn icon-btn" id="sub-btn" onclick="toggleSub()" title="字幕显示">字</button>
+        <button class="cbtn icon-btn" id="loop-btn" onclick="toggleLoop()">↺</button>
+        <button class="cbtn icon-btn" id="sub-btn" onclick="toggleSub()">字</button>
       </div>
-
       <div class="mode-bar">
         <span class="mode-lbl">模式</span>
         <button class="mbtn on" id="m-read" onclick="setMode('read')">阅读</button>
@@ -273,13 +243,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
         <button class="mbtn" id="m-sent" onclick="setMode('sent')">划句</button>
         <button class="mbtn" id="m-note" onclick="setMode('note')">笔记</button>
       </div>
-
-      <div class="hint-strip" id="hint-strip">阅读模式：正常浏览字幕，点击时间戳跳转视频</div>
-
+      <div class="hint-strip" id="hint-strip">阅读模式</div>
       <div class="subtitle-area" id="subtitle-area"></div>
     </div>
-
-    <!-- 右：词汇面板 -->
     <div class="vocab-panel">
       <div class="vtab-bar">
         <div class="vtab on" onclick="switchVtab(this,'v-words')">单词</div>
@@ -290,14 +256,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
       <div class="vpanel" id="v-phrases"></div>
       <div class="vpanel" id="v-mine"></div>
     </div>
-
   </div>
 
-  <!-- 手机面板 -->
   <div class="mobile-panels">
     <div class="m-panel on" id="mp-learn">
-      <div class="video-wrap" id="m-video-wrap"></div>
-      <div class="controls" style="flex-wrap:wrap;">
+      <div class="m-video-wrap" id="m-video-wrap"></div>
+      <div class="controls">
         <div class="prog-wrap" style="width:100%;">
           <span class="time-lbl" id="m-cur-time">0:00</span>
           <input type="range" id="m-prog-bar" min="0" max="100" value="0" step="1" oninput="seekVideo(this.value)">
@@ -308,17 +272,14 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
           <button class="cbtn on" onclick="setSpeed(this,1)">1x</button>
           <button class="cbtn" onclick="setSpeed(this,1.25)">1.25x</button>
         </div>
-        <button class="cbtn icon-btn" onclick="toggleLoop()">↺</button>
       </div>
-      <div class="mode-bar" style="padding:5px 8px;">
-        <span class="mode-lbl">模式</span>
+      <div class="mode-bar">
         <button class="mbtn on" onclick="setMode('read')">阅读</button>
         <button class="mbtn" onclick="setMode('word')">划词</button>
         <button class="mbtn" onclick="setMode('sent')">划句</button>
         <button class="mbtn" onclick="setMode('note')">笔记</button>
       </div>
-      <div class="hint-strip" id="m-hint-strip">点击时间戳跳转视频</div>
-      <div class="subtitle-area" id="m-subtitle-area" style="flex:1;"></div>
+      <div class="subtitle-area" id="m-subtitle-area"></div>
     </div>
     <div class="m-panel" id="mp-vocab">
       <div class="vtab-bar">
@@ -326,33 +287,24 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
         <div class="vtab" onclick="switchVtab(this,'mv-phrases')">短语</div>
         <div class="vtab" onclick="switchVtab(this,'mv-mine')">我的</div>
       </div>
-      <div class="vpanel on" id="mv-words" style="display:block;flex:1;overflow-y:auto;padding:10px;"></div>
-      <div class="vpanel" id="mv-phrases" style="flex:1;overflow-y:auto;padding:10px;"></div>
-      <div class="vpanel" id="mv-mine" style="flex:1;overflow-y:auto;padding:10px;"></div>
+      <div class="vpanel on" id="mv-words"></div>
+      <div class="vpanel" id="mv-phrases"></div>
+      <div class="vpanel" id="mv-mine"></div>
     </div>
     <div class="m-panel" id="mp-episodes">
-      <div class="sidebar" id="m-sidebar" style="flex:1;overflow-y:auto;border:none;"></div>
+      <div class="sidebar" id="m-sidebar"></div>
     </div>
   </div>
 
-  <!-- 手机导航 -->
   <div class="mobile-nav">
     <div class="mnav-items">
-      <div class="mnav-item on" onclick="switchMPanel(this,'mp-learn')">
-        <div class="mnav-icon">▶</div><span>学习</span>
-      </div>
-      <div class="mnav-item" onclick="switchMPanel(this,'mp-vocab')">
-        <div class="mnav-icon">📖</div><span>词汇</span>
-      </div>
-      <div class="mnav-item" onclick="switchMPanel(this,'mp-episodes')">
-        <div class="mnav-icon">☰</div><span>课程</span>
-      </div>
+      <div class="mnav-item on" onclick="switchMPanel(this,'mp-learn')"><div class="mnav-icon">▶</div><span>学习</span></div>
+      <div class="mnav-item" onclick="switchMPanel(this,'mp-vocab')"><div class="mnav-icon">📖</div><span>词汇</span></div>
+      <div class="mnav-item" onclick="switchMPanel(this,'mp-episodes')"><div class="mnav-icon">☰</div><span>课程</span></div>
     </div>
   </div>
-
 </div>
 
-<!-- 单词详情弹窗 -->
 <div class="overlay" id="word-overlay" onclick="closeWordModal(event)">
   <div class="modal">
     <span class="modal-close" onclick="closeWordModal()">✕</span>
@@ -365,13 +317,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
   </div>
 </div>
 
-<!-- 笔记弹窗 -->
 <div class="overlay" id="note-overlay" onclick="closeNoteModal(event)">
   <div class="modal note-modal">
     <span class="modal-close" onclick="closeNoteModal()">✕</span>
     <div class="nm-label">给这句话写笔记</div>
     <div class="nm-quote" id="nm-quote"></div>
-    <textarea id="nm-input" rows="3" placeholder="写下你的理解、用法、联想..."></textarea>
+    <textarea id="nm-input" rows="3"></textarea>
     <div class="nm-actions">
       <button class="nm-cancel" onclick="closeNoteModal()">取消</button>
       <button class="nm-save" onclick="saveNoteEntry()">保存</button>
@@ -380,17 +331,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'PingFa
 </div>
 
 <script>
-/* ══════════════════════════════════════════
-   ① 配置区 — 每期只需修改这里
-══════════════════════════════════════════ */
-
-// 账号列表：{ user: '账号', pass: '密码' }
+// 账号列表
 const ACCOUNTS = [
-  { user: 'demo', pass: '123456' },
-  // 增加会员时在这里添加一行
+  { user: 'demo', pass: '123456' }
 ];
 
-// 课程列表
+// 课程列表（完美对接你在 GitHub 上传的视频文件）
 const EPISODES = [
   {
     id: 'ep001',
@@ -398,7 +344,7 @@ const EPISODES = [
     duration: '4:17',
     isNew: false,
     bvid: '',
-    videoUrl: 'https://cdn.jsdelivr.net/gh/u3618035537-crypto/vlog-english@latest/videos/ep001.mp4',
+    videoUrl: 'https://cdn.jsdelivr.net/gh/u3618035537-crypto/vlog-english@main/5%E6%9C%8817%E6%97%A5(2).mp4',
     subtitles: [
       { t: 0,   en: "Today I'm surprising my dad with a trip to the Olympics!", zh: '今天我要给我爸一个惊喜——一次旅行，去现场看奥运会！' },
       { t: 8,   en: "Yes, you heard that right. The Winter Olympics. Team USA.", zh: '没错，你没有听错。冬奥会。美国队。' },
@@ -417,84 +363,40 @@ const EPISODES = [
       { t: 90,  en: "And he snores really, really, really, really loud. But he's great company while he's awake.", zh: '另外，他睡觉打呼噜真的非常非常大声。不过只要他是醒着的，就是个绝佳的旅伴。' },
       { t: 97,  en: "This is all thanks to YouTube and NBC for partnering with me and bringing me to the Olympics.", zh: '这全都要多谢 YouTube 以及 NBC 邀请我合作，并带我来到奥运会现场。' },
       { t: 101, en: "So first things first, the surprise. I have a very large paper to make him a very large boarding pass to Italy.", zh: '那么言归正传，先准备惊喜。我准备了一张巨大的纸，要给他亲手做一张超大号的意大利登机牌。' },
-      { t: 107, en: "My dad and I will be traveling to Cortina, where the Olympics will be spread all throughout Italy.", zh: '我和我爸会去到科尔蒂纳，不过赛事其实会分散在整个意大利各处。' },
-      { t: 181, en: "Guys, it's time to go surprise my dad. Now close your eyes. Seriously.", zh: '家人们，是时候去给我爸送上惊喜了。现在闭上眼睛。认真的哦。' },
-      { t: 201, en: "Open your eyes. Wow. Boarding pass. Everyone's in. 8th of February. To Italy.", zh: '睁开眼睛了。哇。登机牌。所有人都去。2月8日。飞往意大利。' },
-      { t: 217, en: "Yes. Why? Because we're going to the winter Olympics!", zh: '是的。为什么？因为我们要去现场看冬奥会了！' },
-      { t: 227, en: "I don't know if I can get the time off. You're going to have to get the time off. It's winter Olympics, Edward.", zh: '我不知道我能不能请到假。你必须得请下假来。这可是冬奥会，爱德华。' },
-      { t: 240, en: "And the best part is just me and you.", zh: '而且最棒的是，只有我和你两个人。' },
+      { t: 107, en: "My dad and I will be traveling to Cortina, where the Olympics will be spread all throughout Italy.", zh: '我和我爸会去到科尔蒂纳，不过赛事其实会分散在整个意大利各处。' }
     ],
     words: [
-      { word:'obsessed',   ph:'/əbˈsest/',        pos:'adj.', mean:'着迷的；痴迷的',           ex:'"He\'s obsessed with skiing."',              syn:['addicted','passionate','fanatical'] },
-      { word:'bonded',     ph:'/ˈbɒndɪd/',         pos:'v.',   mean:'建立情感联结；产生羁绊',   ex:'"Skiing is something we\'ve bonded over."',  syn:['connected','united','built a bond'] },
-      { word:'incredible', ph:'/ɪnˈkredɪbl/',      pos:'adj.', mean:'难以置信的；不可思议的',   ex:'"How incredibly special this is."',          syn:['amazing','unbelievable','extraordinary'] },
-      { word:'adventure',  ph:'/ədˈventʃər/',      pos:'n.',   mean:'冒险；奇遇',               ex:'"It\'s going to be an adventure."',          syn:['journey','expedition','experience'] },
-      { word:'partnering', ph:'/ˈpɑːtnərɪŋ/',      pos:'v.',   mean:'合作；建立伙伴关系',       ex:'"Thanks to NBC for partnering with me."',    syn:['collaborating','teaming up','working with'] },
-      { word:'spread',     ph:'/spred/',            pos:'v.',   mean:'分散；遍布',               ex:'"The Olympics will be spread throughout Italy."', syn:['distributed','scattered','extended'] },
+      { word:'obsessed',   ph:'/əbˈsest/',        pos:'adj.', mean:'着迷的；痴迷的',           ex:'"He\'s obsessed with skiing."',           syn:['addicted','passionate','fanatical'] },
+      { word:'bonded',     ph:'/ˈbɒndɪd/',         pos:'v.',  mean:'建立情感联结；产生羁绊',   ex:'"Skiing is something we\'ve bonded over."',  syn:['connected','united','built a bond'] },
+      { word:'incredible', ph:'/ɪnˈkredɪbl/',      pos:'adj.', mean:'难以置信的；不可思议的',   ex:'"How incredibly special this is."',           syn:['amazing','unbelievable','extraordinary'] },
+      { word:'adventure',  ph:'/ədˈventʃər/',      pos:'n.',  mean:'冒险；奇遇',               ex:'"It\'s going to be an adventure."',           syn:['journey','expedition','experience'] }
     ],
     phrases: [
-      { phrase:'dream trip',      mean:'梦想之旅；梦寐以求的旅行', ex:'"Going to the Olympics is my dad\'s literal dream trip."', alt:['bucket list trip','trip of a lifetime','once-in-a-lifetime trip'] },
-      { phrase:'keep up with',    mean:'关注；跟上（最新动态）',   ex:'"What does he like to keep up with? The Winter Olympics."', alt:['follow','stay updated on','track'] },
-      { phrase:'get the time off',mean:'请假；腾出时间',           ex:'"You\'re going to have to get the time off."',             alt:['take time off','take leave','get days off'] },
-      { phrase:'first things first', mean:'先说最重要的；言归正传', ex:'"First things first, the surprise."',                    alt:['to start with','before anything else','most importantly'] },
-    ]
-  },
-  // ── 复制上面的对象，修改内容，添加新一期 ──
-  {
-    id: 'ep002',
-    title: '在纽约租房的那些坑',
-    duration: '11:48',
-    isNew: true,
-    videoUrl: '',
-    subtitles: [
-      { t: 5,  en: "Finding an apartment in New York is absolutely overwhelming.",     zh: '在纽约找公寓真的让人崩溃。' },
-      { t: 18, en: "The competition is fierce — sometimes dozens of people apply for one unit.", zh: '竞争非常激烈——有时候几十个人申请同一个房间。' },
-      { t: 35, en: "I learned pretty quickly that you need to have all your documents ready to go.", zh: '我很快学到，你必须把所有文件准备齐全随时可用。' },
-      { t: 50, en: "The landlord wanted proof of income, references, and a credit check.", zh: '房东要求收入证明、推荐信和信用调查。' },
-    ],
-    words: [
-      { word:'overwhelming', ph:'/ˌoʊvərˈwelmɪŋ/', pos:'adj.', mean:'令人崩溃的；压倒性的', ex:'"Finding an apartment is overwhelming."', syn:['daunting','staggering','crushing'] },
-      { word:'fierce',       ph:'/fɪrs/',           pos:'adj.', mean:'激烈的；凶猛的',       ex:'"The competition is fierce."',           syn:['intense','tough','brutal'] },
-      { word:'references',   ph:'/ˈrefərənsɪz/',    pos:'n.',   mean:'推荐信；推荐人',       ex:'"The landlord wanted references."',      syn:['recommendations','testimonials'] },
-    ],
-    phrases: [
-      { phrase:'ready to go',  mean:'准备就绪；随时可用', ex:'"Have all your documents ready to go."', alt:['all set','prepared','in order'] },
-      { phrase:'proof of income', mean:'收入证明',       ex:'"Landlords require proof of income."',   alt:['income verification','pay stubs'] },
+      { phrase:'dream trip',      mean:'梦想之旅；梦寐以求的旅行', ex:'"Going to the Olympics is my dad\'s literal dream trip."', alt:['bucket list trip','trip of a lifetime'] },
+      { phrase:'keep up with',    mean:'关注；跟上（最新动态）',   ex:'"What does he like to keep up with? The Winter Olympics."', alt:['follow','stay updated on'] },
+      { phrase:'first things first', mean:'先说最重要的；言归正传', ex:'"First things first, the surprise."',                     alt:['to start with','before anything else'] }
     ]
   }
 ];
 
-/* ══════════════════════════════════════════
-   ② 状态
-══════════════════════════════════════════ */
 let currentEp = null;
 let videoEl = null;
 let loopActive = false;
 let subVisible = true;
 let playMode = 'read';
-let myWords = [];
-let mySents = [];
-let myNotes = [];
-let curWordData = null;
-let noteTargetIdx = -1;
+let myWords = []; let mySents = []; let myNotes = [];
+let curWordData = null; let noteTargetIdx = -1;
 
-/* ══════════════════════════════════════════
-   ③ 登录
-══════════════════════════════════════════ */
 function doLogin() {
   const u = document.getElementById('login-user').value.trim();
   const p = document.getElementById('login-pass').value.trim();
   const ok = ACCOUNTS.find(a => a.user === u && a.pass === p);
-  if (!ok) { document.getElementById('login-err').textContent = '账号或密码错误，请重试'; return; }
+  if (!ok) { document.getElementById('login-err').textContent = '账号或密码错误'; return; }
   localStorage.setItem('vlog_user', u);
   enterApp();
 }
-document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 
-function doLogout() {
-  localStorage.removeItem('vlog_user');
-  location.reload();
-}
+function doLogout() { localStorage.removeItem('vlog_user'); location.reload(); }
 
 function enterApp() {
   document.getElementById('login-page').style.display = 'none';
@@ -502,7 +404,6 @@ function enterApp() {
   buildSidebar();
   buildEpSelect();
   loadEpisode(EPISODES[0].id);
-  loadNotebook();
 }
 
 window.addEventListener('load', () => {
@@ -510,48 +411,29 @@ window.addEventListener('load', () => {
   if (saved && ACCOUNTS.find(a => a.user === saved)) enterApp();
 });
 
-/* ══════════════════════════════════════════
-   ④ 课程加载
-══════════════════════════════════════════ */
 function buildSidebar() {
   ['sidebar','m-sidebar'].forEach(id => {
     const el = document.getElementById(id);
-    el.innerHTML = '<div class="sidebar-head">全部课程</div>' +
-      EPISODES.map(ep => `
+    if(el) el.innerHTML = '<div class="sidebar-head">全部课程</div>' + EPISODES.map(ep => `
         <div class="ep-item" id="si-${ep.id}" onclick="loadEpisode('${ep.id}')">
           <div class="ep-num">${ep.id.replace('ep','')}</div>
-          <div class="ep-meta">
-            <div class="ep-name">${ep.title}</div>
-            <div class="ep-dur">${ep.duration}</div>
-          </div>
-          ${ep.isNew ? '<span class="ep-new">新</span>' : ''}
+          <div class="ep-meta"><div class="ep-name">${ep.title}</div></div>
         </div>`).join('');
   });
 }
 
 function buildEpSelect() {
   const sel = document.getElementById('ep-select');
-  sel.innerHTML = EPISODES.map(ep => `<option value="${ep.id}">${ep.id.replace('ep','第')}期 · ${ep.title}</option>`).join('');
+  if(sel) sel.innerHTML = EPISODES.map(ep => `<option value="${ep.id}">第${ep.id.replace('ep','')}期 · ${ep.title}</option>`).join('');
 }
 
 function loadEpisode(id) {
   currentEp = EPISODES.find(e => e.id === id);
   if (!currentEp) return;
-
-  // 激活侧边栏
   document.querySelectorAll('.ep-item').forEach(el => el.classList.remove('active'));
   document.querySelectorAll(`#si-${id}`).forEach(el => el.classList.add('active'));
-  document.getElementById('ep-select').value = id;
-
-  // 重置状态
-  myWords = []; mySents = []; myNotes = [];
-  loadNotebook();
-
-  // 渲染视频
   renderVideo();
-  // 渲染字幕
   renderSubtitles();
-  // 渲染词汇
   renderWords();
   renderPhrases();
   renderMine();
@@ -561,38 +443,12 @@ function renderVideo() {
   ['video-wrap','m-video-wrap'].forEach(id => {
     const wrap = document.getElementById(id);
     if (!wrap) return;
-    const isMobile = id === 'm-video-wrap';
-    const maxH = isMobile ? '35vw' : '42vh';
-
-    if (currentEp.bvid) {
-      // B站嵌入模式
-      wrap.innerHTML = `
-        <div style="position:relative;width:100%;aspect-ratio:16/9;max-height:${maxH};background:#000;">
-          <iframe
-            src="https://player.bilibili.com/player.html?bvid=${currentEp.bvid}&page=1&high_quality=1&danmaku=0&autoplay=0"
-            style="width:100%;height:100%;border:none;display:block;"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-        <div style="padding:6px 12px;background:var(--bg3);font-size:11px;color:var(--text3);border-bottom:1px solid var(--border);">
-          ↑ B站播放器 · 倍速请点视频右键或播放器内设置 · 点击下方时间戳可跳转
-        </div>`;
-    } else if (currentEp.videoUrl) {
-      // 本地/R2视频模式
-      wrap.innerHTML = `<video id="${isMobile ? 'm-vid' : 'vid'}" src="${currentEp.videoUrl}" controls style="width:100%;display:block;max-height:${maxH};" preload="metadata"></video>`;
-      const v = wrap.querySelector('video');
-      if (!isMobile) videoEl = v;
-      v.addEventListener('timeupdate', onTimeUpdate);
-    } else {
-      wrap.innerHTML = `<div class="no-video" style="aspect-ratio:16/9;max-height:${maxH};"><div style="color:var(--text2);font-size:12px;text-align:center;line-height:1.8;">暂无视频<br><span style="font-size:10px;opacity:0.5;">请填入 bvid 或 videoUrl</span></div></div>`;
-    }
+    wrap.innerHTML = `<video id="${id === 'm-video-wrap' ? 'm-vid' : 'vid'}" src="${currentEp.videoUrl}" controls style="width:100%;display:block;" crossorigin="anonymous" preload="metadata"></video>`;
+    const v = wrap.querySelector('video');
+    v.addEventListener('timeupdate', onTimeUpdate);
   });
 }
 
-/* ══════════════════════════════════════════
-   ⑤ 视频控制
-══════════════════════════════════════════ */
 function getVideo() { return document.getElementById('vid') || document.getElementById('m-vid'); }
 
 function onTimeUpdate() {
@@ -604,357 +460,102 @@ function onTimeUpdate() {
   highlightActiveSub(v.currentTime);
 }
 
-function fmt(s) {
-  s = Math.round(s);
-  return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
-}
+function fmt(s) { s = Math.round(s); return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0'); }
+function seekVideo(pct) { const v = getVideo(); if (v && v.duration) v.currentTime = v.duration * pct / 100; }
+function setSpeed(btn, s) { const v = getVideo(); if(v) v.playbackRate = s; btn.closest('.ctrl-group').querySelectorAll('.cbtn').forEach(b => b.classList.remove('on')); btn.classList.add('on'); }
+function toggleLoop() { loopActive = !loopActive; document.getElementById('loop-btn')?.classList.toggle('on', loopActive); }
+function toggleSub() { subVisible = !subVisible; document.querySelectorAll('.zh-line').forEach(el => el.style.display = subVisible ? '' : 'none'); }
+function jumpToTime(t) { const v = getVideo(); if (v) { v.currentTime = t; v.play(); } }
 
-function seekVideo(pct) {
-  const v = getVideo(); if (!v || !v.duration) return;
-  v.currentTime = v.duration * pct / 100;
-}
-
-function setSpeed(btn, s) {
-  const v = getVideo(); if(v) v.playbackRate = s;
-  btn.closest('.ctrl-group').querySelectorAll('.cbtn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-}
-
-function toggleLoop() {
-  loopActive = !loopActive;
-  const btn = document.getElementById('loop-btn');
-  if(btn) btn.classList.toggle('on', loopActive);
-}
-
-function toggleSub() {
-  subVisible = !subVisible;
-  document.querySelectorAll('.zh-line').forEach(el => el.style.display = subVisible ? '' : 'none');
-  const btn = document.getElementById('sub-btn');
-  if(btn) btn.classList.toggle('on', !subVisible);
-}
-
-function jumpToTime(t) {
-  const v = getVideo();
-  if (v) { v.currentTime = t; v.play(); }
-}
-
-/* ══════════════════════════════════════════
-   ⑥ 字幕渲染
-══════════════════════════════════════════ */
 function renderSubtitles() {
   ['subtitle-area','m-subtitle-area'].forEach(areaId => {
-    const area = document.getElementById(areaId);
-    if (!area) return;
+    const area = document.getElementById(areaId); if (!area) return;
     area.innerHTML = currentEp.subtitles.map((s, i) => `
-      <div class="sub-row" id="${areaId}-row-${i}" data-idx="${i}" data-t="${s.t}">
+      <div class="sub-row" id="${areaId}-row-${i}">
         <div class="sub-ts" onclick="jumpToTime(${s.t})">${fmt(s.t)}</div>
-        <div class="en-line" id="${areaId}-en-${i}">${highlightPreset(s.en, i)}</div>
+        <div class="en-line">${highlightPreset(s.en)}</div>
         <div class="zh-line">${s.zh}</div>
         <div class="sent-actions" id="${areaId}-sa-${i}">
-          <button class="sa-btn" onclick="saveSent(${i})">🔖 收藏这句</button>
-          <button class="sa-btn" onclick="openNoteModal(${i})">✏️ 加笔记</button>
-          <button class="sa-btn" onclick="loopSent(${i})">↺ 单句循环</button>
+          <button class="sa-btn" onclick="saveSent(${i})">🔖 收藏</button>
+          <button class="sa-btn" onclick="openNoteModal(${i})">✏️ 笔记</button>
         </div>
       </div>`).join('');
-
-    // 划词事件
     area.addEventListener('mouseup', onTextSelect);
   });
 }
 
-function highlightPreset(en, idx) {
-  if (!currentEp) return en;
-  let result = en;
-  // 高亮短语（先处理，避免单词覆盖）
-  currentEp.phrases.forEach(p => {
-    const reg = new RegExp(`(${p.phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g,'\\$&')})`, 'gi');
-    result = result.replace(reg, `<span class="hl-phrase" title="${p.mean}">$1</span>`);
-  });
-  // 高亮单词
-  currentEp.words.forEach(w => {
-    const reg = new RegExp(`\\b(${w.word})\\b`, 'gi');
-    result = result.replace(reg, (m) => {
-      if (m.includes('class=')) return m;
-      return `<span class="hl-word" onclick="openWordModal(event,'${w.word}')">${m}</span>`;
-    });
-  });
-  return result;
+function highlightPreset(en) {
+  let res = en;
+  currentEp.phrases.forEach(p => { res = res.replace(new RegExp(`(${p.phrase})`,'gi'), `<span class="hl-phrase">$1</span>`); });
+  currentEp.words.forEach(w => { res = res.replace(new RegExp(`\\b(${w.word})\\b`,'gi'), `<span class="hl-word" onclick="openWordModal(event,'${w.word}')">$1</span>`); });
+  return res;
 }
 
 function highlightActiveSub(t) {
-  const subs = currentEp?.subtitles;
-  if (!subs) return;
+  const subs = currentEp?.subtitles; if (!subs) return;
   let active = -1;
-  for (let i = 0; i < subs.length; i++) {
-    if (t >= subs[i].t && (i === subs.length-1 || t < subs[i+1].t)) active = i;
-  }
+  for (let i = 0; i < subs.length; i++) { if (t >= subs[i].t && (i === subs.length-1 || t < subs[i+1].t)) active = i; }
   ['subtitle-area','m-subtitle-area'].forEach(areaId => {
-    subs.forEach((_, i) => {
-      const row = document.getElementById(`${areaId}-row-${i}`);
-      if (row) row.classList.toggle('active-line', i === active);
-    });
-    if (active >= 0) {
-      const activeRow = document.getElementById(`${areaId}-row-${active}`);
-      if (activeRow) activeRow.scrollIntoView({ behavior:'smooth', block:'nearest' });
-    }
+    subs.forEach((_, i) => document.getElementById(`${areaId}-row-${i}`)?.classList.toggle('active-line', i === active));
+    if (active >= 0) document.getElementById(`${areaId}-row-${active}`)?.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });
 }
-
-/* ══════════════════════════════════════════
-   ⑦ 学习模式
-══════════════════════════════════════════ */
-const hintTexts = {
-  read: '阅读模式：点击时间戳跳转视频，点击黄色单词查看详情',
-  word: '划词模式：选中任意单词或短语，自动加入我的单词本',
-  sent: '划句模式：点击任意字幕行，收藏或添加单句循环',
-  note: '笔记模式：点击任意字幕行，给这句话写学习笔记',
-};
 
 function setMode(m) {
   playMode = m;
   document.querySelectorAll('.mbtn').forEach(b => b.classList.remove('on'));
-  document.querySelectorAll(`[onclick*="setMode('${m}')"]`).forEach(b => b.classList.add('on'));
-  ['hint-strip','m-hint-strip'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent=hintTexts[m]; });
-
-  // 句子操作栏 & 高亮
-  ['subtitle-area','m-subtitle-area'].forEach(areaId => {
-    document.querySelectorAll(`[id^="${areaId}-row-"]`).forEach((row, i) => {
-      row.classList.remove('sent-hl');
-      const sa = document.getElementById(`${areaId}-sa-${i}`);
-      if (sa) sa.classList.remove('show');
-      row.style.cursor = (m === 'sent' || m === 'note') ? 'pointer' : '';
-      row.onclick = (m === 'sent' || m === 'note') ? () => onRowClick(areaId, i) : null;
-    });
-  });
+  ['hint-strip'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent = hintTexts[m] || m; });
 }
 
-function onRowClick(areaId, i) {
-  if (playMode === 'sent') {
-    document.querySelectorAll(`[id^="${areaId}-row-"]`).forEach((r,j) => {
-      r.classList.remove('sent-hl');
-      const sa = document.getElementById(`${areaId}-sa-${j}`);
-      if(sa) sa.classList.remove('show');
-    });
-    const row = document.getElementById(`${areaId}-row-${i}`);
-    if(row) row.classList.add('sent-hl');
-    const sa = document.getElementById(`${areaId}-sa-${i}`);
-    if(sa) sa.classList.add('show');
-  } else if (playMode === 'note') {
-    openNoteModal(i);
-  }
-}
+const hintTexts = { read: '阅读模式', word: '划词模式', sent: '划句模式', note: '笔记模式' };
 
-function saveSent(i) {
-  const s = currentEp.subtitles[i];
-  if (!mySents.find(x => x.idx === i)) {
-    mySents.push({ idx: i, en: s.en, zh: s.zh });
-    renderMine();
-  }
-  ['subtitle-area','m-subtitle-area'].forEach(areaId => {
-    const row = document.getElementById(`${areaId}-row-${i}`);
-    if(row) row.classList.remove('sent-hl');
-    const sa = document.getElementById(`${areaId}-sa-${i}`);
-    if(sa) sa.classList.remove('show');
-  });
-}
-
-function loopSent(i) {
-  const s = currentEp.subtitles[i];
-  const next = currentEp.subtitles[i+1];
-  const end = next ? next.t : s.t + 15;
-  const v = getVideo();
-  if (!v) return;
-  v.currentTime = s.t;
-  v.play();
-  loopActive = true;
-  function checkLoop() {
-    if (!loopActive) { v.removeEventListener('timeupdate', checkLoop); return; }
-    if (v.currentTime >= end) { v.currentTime = s.t; }
-  }
-  v.addEventListener('timeupdate', checkLoop);
-  ['subtitle-area','m-subtitle-area'].forEach(areaId => {
-    const sa = document.getElementById(`${areaId}-sa-${i}`);
-    if(sa) sa.classList.remove('show');
-  });
-}
-
-/* ══════════════════════════════════════════
-   ⑧ 划词
-══════════════════════════════════════════ */
-function onTextSelect(e) {
+function onTextSelect() {
   if (playMode !== 'word') return;
-  const sel = window.getSelection();
-  if (!sel || sel.isCollapsed) return;
-  const text = sel.toString().trim();
-  if (!text || text.length < 2 || text.length > 60) return;
-  if (!myWords.find(w => w.text === text)) {
-    myWords.push({ text });
-    saveNotebook();
-    renderMine();
-  }
-  sel.removeAllRanges();
+  const s = window.getSelection().toString().trim();
+  if (s.length > 1 && !myWords.find(w => w.text === s)) { myWords.push({ text: s }); renderMine(); }
 }
 
-/* ══════════════════════════════════════════
-   ⑨ 单词弹窗
-══════════════════════════════════════════ */
-function openWordModal(e, wordKey) {
+function openWordModal(e, w) {
   if (e) e.stopPropagation();
-  const d = currentEp?.words.find(w => w.word.toLowerCase() === wordKey.toLowerCase());
-  if (!d) return;
+  const d = currentEp.words.find(x => x.word.toLowerCase() === w.toLowerCase()); if (!d) return;
   curWordData = d;
   document.getElementById('mw-word').textContent = d.word;
-  document.getElementById('mw-ph').textContent = d.ph + ' · ' + d.pos;
+  document.getElementById('mw-ph').textContent = d.ph;
   document.getElementById('mw-mean').textContent = d.mean;
   document.getElementById('mw-ex').textContent = d.ex;
-  document.getElementById('mw-syns').innerHTML = d.syn.map(s => `<span class="wtag">${s}</span>`).join('');
   document.getElementById('word-overlay').classList.add('show');
 }
 
-function closeWordModal(e) {
-  if (e && e.target !== document.getElementById('word-overlay')) return;
-  document.getElementById('word-overlay').classList.remove('show');
-}
+function closeWordModal() { document.getElementById('word-overlay').classList.remove('show'); }
+function saveToNotebook() { if (curWordData && !myWords.find(w => w.text === curWordData.word)) { myWords.push({ text: curWordData.word }); renderMine(); } closeWordModal(); }
+function openNoteModal(i) { noteTargetIdx = i; document.getElementById('nm-quote').textContent = currentEp.subtitles[i].en; document.getElementById('note-overlay').classList.add('show'); }
+function closeNoteModal() { document.getElementById('note-overlay').classList.remove('show'); }
+function saveNoteEntry() { const txt = document.getElementById('nm-input').value.trim(); if(txt) { myNotes.push({ idx: noteTargetIdx, text: txt }); renderMine(); } closeNoteModal(); }
 
-function saveToNotebook() {
-  if (!curWordData) return;
-  if (!myWords.find(w => w.text === curWordData.word)) {
-    myWords.push({ text: curWordData.word });
-    saveNotebook();
-    renderMine();
-  }
-  const btn = document.querySelector('.modal-save');
-  btn.textContent = '✓ 已加入';
-  setTimeout(() => { btn.textContent = '＋ 加入单词本'; document.getElementById('word-overlay').classList.remove('show'); }, 800);
-}
-
-/* ══════════════════════════════════════════
-   ⑩ 笔记弹窗
-══════════════════════════════════════════ */
-function openNoteModal(i) {
-  noteTargetIdx = i;
-  const s = currentEp.subtitles[i];
-  document.getElementById('nm-quote').textContent = '"' + s.en + '"';
-  document.getElementById('nm-input').value = myNotes.find(n => n.idx === i)?.text || '';
-  document.getElementById('note-overlay').classList.add('show');
-  setTimeout(() => document.getElementById('nm-input').focus(), 50);
-}
-
-function closeNoteModal(e) {
-  if (e && e.target !== document.getElementById('note-overlay')) return;
-  document.getElementById('note-overlay').classList.remove('show');
-}
-
-function saveNoteEntry() {
-  const text = document.getElementById('nm-input').value.trim();
-  if (!text) { closeNoteModal(); return; }
-  const s = currentEp.subtitles[noteTargetIdx];
-  const ex = myNotes.findIndex(n => n.idx === noteTargetIdx);
-  if (ex >= 0) myNotes[ex].text = text;
-  else myNotes.push({ idx: noteTargetIdx, en: s.en, zh: s.zh, text });
-  ['subtitle-area','m-subtitle-area'].forEach(areaId => {
-    const row = document.getElementById(`${areaId}-row-${noteTargetIdx}`);
-    if(row) row.classList.add('has-note');
-  });
-  saveNotebook();
-  renderMine();
-  closeNoteModal();
-}
-
-/* ══════════════════════════════════════════
-   ⑪ 词汇面板渲染
-══════════════════════════════════════════ */
 function renderWords() {
-  const html = currentEp?.words.map(w => `
-    <div class="wcard" onclick="openWordModal(null,'${w.word}')">
-      <div class="wcard-head"><span class="wword">${w.word}</span><span class="wph">${w.ph}</span><span class="wpos">${w.pos}</span></div>
-      <div class="wmean">${w.mean}</div>
-      <div class="wex">${w.ex}</div>
-      <div class="wtags">${w.syn.map(s=>`<span class="wtag">${s}</span>`).join('')}</div>
-    </div>`).join('') || '';
-  ['v-words','mv-words'].forEach(id => { const el=document.getElementById(id); if(el) el.innerHTML=html; });
+  const h = currentEp.words.map(w => `<div class="wcard" onclick="openWordModal(null,'${w.word}')"><div class="wcard-head"><span class="wword">${w.word}</span></div><div class="wmean">${w.mean}</div></div>`).join('');
+  ['v-words','mv-words'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = h; });
 }
 
 function renderPhrases() {
-  const html = currentEp?.phrases.map(p => `
-    <div class="pcard">
-      <div class="pp">${p.phrase}</div>
-      <div class="pm">${p.mean}</div>
-      <div class="pe">${p.ex}</div>
-      <div class="alt-lbl">同义替换</div>
-      ${p.alt.map(a=>`<span class="atag">${a}</span>`).join('')}
-    </div>`).join('') || '';
-  ['v-phrases','mv-phrases'].forEach(id => { const el=document.getElementById(id); if(el) el.innerHTML=html; });
+  const h = currentEp.phrases.map(p => `<div class="pcard"><div class="pp">${p.phrase}</div><div class="pm">${p.mean}</div></div>`).join('');
+  ['v-phrases','mv-phrases'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = h; });
 }
 
 function renderMine() {
-  let html = '';
-  if (myWords.length) {
-    html += `<div class="vsec-title">我划的词</div><div style="margin-bottom:12px;">${myWords.map((w,i)=>`<span class="nb-word-chip" onclick="removeWord(${i})" title="点击移除">${w.text} ✕</span>`).join('')}</div>`;
-  }
-  if (mySents.length) {
-    html += `<div class="vsec-title">收藏的句子</div>` + mySents.map(s => {
-      const note = myNotes.find(n => n.idx === s.idx);
-      return `<div class="nb-sent"><div class="nb-sent-en">${s.en}</div><div class="nb-sent-zh">${s.zh}</div>${note?`<div class="nb-sent-note">笔记：${note.text}</div>`:''}</div>`;
-    }).join('');
-  }
-  if (myNotes.length && !mySents.length) {
-    html += `<div class="vsec-title">我的笔记</div>` + myNotes.map(n => `<div class="nb-note-item"><div class="nb-note-kw">"${n.en.substring(0,50)}..."</div><div class="nb-note-txt">${n.text}</div></div>`).join('');
-  }
-  if (!html) html = '<div class="nb-empty">使用划词、划句、笔记模式<br>内容会显示在这里</div>';
-  html += `<button class="exp-btn" onclick="exportNotes()">↓ 导出我的笔记</button>`;
-  ['v-mine','mv-mine'].forEach(id => { const el=document.getElementById(id); if(el) el.innerHTML=html; });
+  let h = myWords.map(w => `<span class="nb-word-chip">${w.text}</span>`).join('');
+  ['v-mine','mv-mine'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = h || '暂无生词'; });
 }
 
-function removeWord(i) { myWords.splice(i,1); saveNotebook(); renderMine(); }
-
-/* ══════════════════════════════════════════
-   ⑫ 面板切换
-══════════════════════════════════════════ */
-function switchVtab(tab, panelId) {
-  const bar = tab.closest('.vtab-bar');
-  bar.querySelectorAll('.vtab').forEach(t => t.classList.remove('on'));
-  tab.classList.add('on');
-  const wrap = bar.closest('.vocab-panel') || bar.closest('.m-panel');
-  if (!wrap) return;
-  wrap.querySelectorAll('.vpanel').forEach(p => p.classList.remove('on'));
-  const target = document.getElementById(panelId);
-  if (target) { target.classList.add('on'); target.style.display = 'block'; }
-  if (panelId.includes('mine') || panelId.includes('mv-mine')) renderMine();
+function switchVtab(tab, pId) {
+  const bar = tab.closest('.vtab-bar'); bar.querySelectorAll('.vtab').forEach(t => t.classList.remove('on')); tab.classList.add('on');
+  const panel = document.getElementById(pId); panel.closest('.vocab-panel, .m-panel').querySelectorAll('.vpanel').forEach(p => p.style.display = 'none');
+  if(panel) panel.style.display = 'block';
 }
 
-function switchMPanel(item, panelId) {
-  document.querySelectorAll('.mnav-item').forEach(i => i.classList.remove('on'));
-  item.classList.add('on');
-  document.querySelectorAll('.m-panel').forEach(p => p.classList.remove('on'));
-  const target = document.getElementById(panelId);
-  if (target) target.classList.add('on');
-}
-
-/* ══════════════════════════════════════════
-   ⑬ 本地存储
-══════════════════════════════════════════ */
-function saveNotebook() {
-  const key = `vlog_nb_${currentEp?.id}`;
-  localStorage.setItem(key, JSON.stringify({ words: myWords, sents: mySents, notes: myNotes }));
-}
-
-function loadNotebook() {
-  const key = `vlog_nb_${currentEp?.id}`;
-  const raw = localStorage.getItem(key);
-  if (raw) { try { const d=JSON.parse(raw); myWords=d.words||[]; mySents=d.sents||[]; myNotes=d.notes||[]; } catch(e){} }
-  renderMine();
-}
-
-function exportNotes() {
-  let out = `=== Vlog英语 第${currentEp?.id?.replace('ep','')}期 学习笔记 ===\n\n`;
-  if (myWords.length) out += '【我划的词】\n' + myWords.map(w=>w.text).join('、') + '\n\n';
-  if (mySents.length) { out += '【收藏的句子】\n'; mySents.forEach(s => { out += s.en + '\n' + s.zh + '\n'; const n=myNotes.find(n=>n.idx===s.idx); if(n) out+='笔记：'+n.text+'\n'; out+='\n'; }); }
-  if (!myWords.length && !mySents.length) { alert('还没有内容，先划词或收藏句子吧！'); return; }
-  const a = document.createElement('a');
-  a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(out);
-  a.download = `Vlog英语_第${currentEp?.id?.replace('ep','')}期_笔记.txt`;
-  a.click();
+function switchMPanel(item, pId) {
+  document.querySelectorAll('.mnav-item').forEach(i => i.classList.remove('on')); item.classList.add('on');
+  document.querySelectorAll('.m-panel').forEach(p => p.classList.remove('on')); document.getElementById(pId).classList.add('on');
 }
 </script>
 </body>
